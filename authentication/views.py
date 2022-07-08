@@ -12,7 +12,7 @@ payload = {'category': 'bank_statement',
            'upload_for': 'user_registration'}
 files = [
     ('file', ('Partner Web Service documentation v15 08112021docx (2).pdf', open(
-        '/Users/anomaly/Desktop/API/sample.pdf', 'rb'), 'application/pdf'))
+        'API/uploads/sample.pdf', 'rb'), 'application/pdf'))
 ]
 headers = {
     'Authorization': 'Bearer 00D740000008fzN!AQ8AQHS7fDz.qmufo3XflnMxuBlnKiM3yLKttVo.5SnnWm8O3OBtFL5ACGo3CMiU90Fm6HHpUCNwQYHYfjIkW1cZWom4oG2d',
