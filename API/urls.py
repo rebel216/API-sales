@@ -8,5 +8,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/',include('authentication.urls')),
-    path('upload/', include(("app_name.urls", "app_name"), namespace="api")),
+    path('orders/', include('orders.urls')),
 ]

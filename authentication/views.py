@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from rest_framework import generics,status
+from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 import requests
 
@@ -20,6 +21,7 @@ headers = {
 }
 
 class HelloAuthView(generics.GenericAPIView):
+    #permission_classes = (IsAuthenticated,)
     def get(self,request):
         response = requests.request(
             "POST", url, headers=headers, data=payload, files=files)

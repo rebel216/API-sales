@@ -43,8 +43,17 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'orders.apps.OrdersConfig',
     'rest_framework',
+    'rest_framework.authtoken',
+   
    
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,3 +146,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = 'uploads/'
+SESSION_COOKIE_SECURE = True
