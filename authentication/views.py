@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from orders.views import DataView
 # Create your views here.
 import requests
 
@@ -12,8 +13,8 @@ payload = {'category': 'bank_statement',
            'original_filename': 'bank_statement.pdf',
            'upload_for': 'user_registration'}
 files = [
-    ('file', ('Partner Web Service documentation v15 08112021docx (2).pdf', open(
-        'API/uploads/sample.pdf', 'rb'), 'application/pdf'))
+    ('file', ('Partner Web Service documentation v15 08112021docx (2).pdf',
+     open('API//sample.pdf', 'rb'), 'application/pdf'))
 ]
 headers = {
     'Authorization': 'Bearer 00D740000008fzN!AQ8AQHS7fDz.qmufo3XflnMxuBlnKiM3yLKttVo.5SnnWm8O3OBtFL5ACGo3CMiU90Fm6HHpUCNwQYHYfjIkW1cZWom4oG2d',
