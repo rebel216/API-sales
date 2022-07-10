@@ -41,10 +41,10 @@ class DataView(APIView):
                        'user_slug': slug,
                        'original_filename': 'bank_statement.pdf',
                        'upload_for': 'user_registration'}
-            # response = requests.request(
-            # "POST", url, headers=headers, data=payload, files=files)
-            # return Response(data={response}, status=status.HTTP_200_OK)
-            return Response({"status": "success", "header": slug}, status=status.HTTP_200_OK)
+            response = requests.request(
+            "POST", url, headers=headers, data=payload, files=files)
+            return Response(data={response}, status=status.HTTP_200_OK)
+            #return Response({"status": "success", "header": slug}, status=status.HTTP_200_OK)
         else:
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
