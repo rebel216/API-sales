@@ -21,11 +21,11 @@ headers = {
 
 
 class DataView(APIView):
-    def post(self, request):
+    
+    def post(self, request, *args, **kwargs):
         
         serializer = Dataserializer(data=request.data)
-        
-        
+       
         if serializer.is_valid():
             serializer.save()
             file_uploaded = request.FILES['file_uploaded']
@@ -35,11 +35,11 @@ class DataView(APIView):
 
             files = [
                 ('file', ('Partner Web Service documentation v15 08112021docx (2).pdf',
-                        open(settings.MEDIA_ROOT+uploaded_file_url, 'rb'), 'application/pdf'))
+                        open('API/sample.pdf', 'rb'), 'application/all'))
             ]
             slug = serializer.data.get('user_slug')
             payload = {'category': 'bank_statement',
-                       'user_slug': 'de07c9ff474741c08fe9bbc66b0a4f84',
+                       'user_slug': slug,
                        'original_filename': 'bank_statement.pdf',
                        'upload_for': 'user_registration'}
             response = requests.request(
@@ -47,6 +47,7 @@ class DataView(APIView):
             return Response(data={response}, status=status.HTTP_200_OK)
             #return Response({"status": "success", "header": slug}, status=status.HTTP_200_OK)
         else:
+            print(serializer.data.get('user_slug'))
             return Response({"status": "xxx", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
    
