@@ -10,7 +10,7 @@ from rest_framework.parsers import MultiPartParser
 import requests
 from django.core.files.storage import FileSystemStorage
 
-url = "https://app.bluevine.com/api/v3/partners/file-upload/?external_register_token=PLATFORMFUNDINGTEST-2a1e0af3691a4667a2b6658db3dfce62&pid_login=0182857"
+url = "https://app.bluevine.com/api/v3/partners/file-upload/?external_register_token=PLATFORMFUNDING-7fc07fad174b43af8df49921b8d66214&pid_login=0182857"
 
 
 headers = {

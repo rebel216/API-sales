@@ -8,8 +8,7 @@ import requests
 
 url = "https://app.bluevine.com/api/v3/partners/file-upload/?external_register_token=PLATFORMFUNDING-7fc07fad174b43af8df49921b8d66214&pid_login=0182857"
 
-payload = {'category': 'bank_statement',
-           'user_slug': 'de07c9ff474741c08fe9bbc66b0a4f84',
+payload = {'category': 'bank_statement',        
            'original_filename': 'bank_statement.pdf',
            'upload_for': 'user_registration'}
 files = [
