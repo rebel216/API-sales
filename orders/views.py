@@ -10,7 +10,7 @@ from rest_framework.parsers import MultiPartParser
 import requests
 from django.core.files.storage import FileSystemStorage
 
-url = "https://app.bluevine.com/api/v3/partners/file-upload/?external_register_token=PLATFORMFUNDING-7fc07fad174b43af8df49921b8d66214&pid_login=0182857"
+url = "https://app.bluevine.com/api/v3/partners/file-upload/?external_register_token=PLATFORMFUNDINGTEST-2a1e0af3691a4667a2b6658db3dfce62&pid_login=0182857"
 
 
 headers = {
@@ -22,6 +22,7 @@ headers = {
 
 class DataView(APIView):
     def post(self, request):
+        
         serializer = Dataserializer(data=request.data)
         
         
@@ -38,7 +39,7 @@ class DataView(APIView):
             ]
             slug = serializer.data.get('user_slug')
             payload = {'category': 'bank_statement',
-                       'user_slug': slug,
+                       'user_slug': 'de07c9ff474741c08fe9bbc66b0a4f84',
                        'original_filename': 'bank_statement.pdf',
                        'upload_for': 'user_registration'}
             response = requests.request(
@@ -46,7 +47,7 @@ class DataView(APIView):
             return Response(data={response}, status=status.HTTP_200_OK)
             #return Response({"status": "success", "header": slug}, status=status.HTTP_200_OK)
         else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"status": "xxx", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
    
         
