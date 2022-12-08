@@ -148,6 +148,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-MEDIA_URL = '/API/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'API/')
+MEDIA_URL = ''
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
 SESSION_COOKIE_SECURE = True
