@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orders.apps.OrdersConfig',
+    'authentication.apps.AuthenticationConfig',
+    'orders',
     'rest_framework',
-    'API',   
+          
 ]
 
 REST_FRAMEWORK = {
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'API.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,6 +147,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '')
-MEDIA_URL = ''
+
+MEDIA_URL = '/API/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'API/')
 SESSION_COOKIE_SECURE = True
