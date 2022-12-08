@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['1.0.0.127.in-addr.arpa','sales-api-bv.herokuapp.com']
 
 
 # Application definition
@@ -64,6 +64,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 ROOT_URLCONF = 'API.urls'
 
 TEMPLATES = [
@@ -90,19 +92,18 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 
 
-DATABASES = {}
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'anomaly',
+       'USER': 'anomaly',
+       'PASSWORD': 'Rebel123@',
+       'HOST': 'localhost',
+       'PORT': '5431',
+   }
+}
 
-if DEBUG:
-    DATABASES["default"] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
 
-    }
-else:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=600, ssl_require=True)
-    DATABASES['default'] = dj_database_url.config(
-        default=config('DATABASE_URL'))  # type: ignore
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
