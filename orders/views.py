@@ -29,22 +29,10 @@ class DataView(APIView):
         print(request.FILES)       
         if serializer.is_valid():
             serializer.save()
-            # form = UploadFileForm(request.POST, request.FILES)
-            if request.method == 'POST':
-                form = UploadFileForm(request.POST, request.FILES)
-            # if form.is_valid():
-            #     handle_uploaded_file(request.FILES['file'])
-
-            # # handle_uploaded_file(request.FILES['file_uploaded'])
-            # form = UploadFileForm(request.POST , request.FILES)
-            # handle_uploaded_file(request.FILES['file'].read())
-            
-            # print(doc.size) 
-            User_slug = serializer.data.get('slug')
-           
+            User_slug = request.headers.get('slug')
             file_up = request.FILES.get("file")
             
-            print("ASDSFASAJMSFDAKSKASDKASFDASMDMASMFDASMDFAMSMFD")
+            print(User_slug)
             fs = FileSystemStorage()
             filename = fs.save("sample.pdf", file_up)
             uploaded_file_url = fs.url(filename)
