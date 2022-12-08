@@ -93,19 +93,9 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 
 DATABASES = {}
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
-if DEBUG:
-    DATABASES["default"] = {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-
-    }
-else:
-    DATABASES["default"] = {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
