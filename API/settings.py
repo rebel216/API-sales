@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','sales-api-bv.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
-    'orders',
+    'orders.apps.OrdersConfig',
     'rest_framework',
-    'whitenoise.runserver_nostatic',
-          
+    'rest_framework.authtoken',
+   
+   
 ]
 
 REST_FRAMEWORK = {
@@ -65,14 +66,12 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 ROOT_URLCONF = 'API.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,18 +94,17 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 DATABASES = {}
 
-
 if DEBUG:
     DATABASES["default"] = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'postgres',
+        'NAME': 'postgres',
 
     }
 else:
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=600, ssl_require=True)
     DATABASES['default'] = dj_database_url.config(
-        default=config('DATABASE_URL'))  # type: ignore
+        default=config('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -151,7 +149,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-MEDIA_URL = ''
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
+MEDIA_URL = ''
 SESSION_COOKIE_SECURE = True
