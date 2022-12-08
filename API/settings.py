@@ -99,8 +99,8 @@ if len(DATABASES['default']) == 0:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dbolib',
-            'USER': 'alejandro',
+            'NAME': 'postgres',
+            'USER': 'anomaly',
             'PASSWORD': 'zzzzz'
     }
 }
