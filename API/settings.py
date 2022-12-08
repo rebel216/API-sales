@@ -98,7 +98,7 @@ DATABASES = {}
 if DEBUG:
     DATABASES["default"] = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.postgresql',
+        'NAME':'postgres',
 
     }
 else:
