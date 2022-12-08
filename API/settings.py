@@ -93,9 +93,17 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 
 DATABASES = {}
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES['default'] = dj_database_url.config()
 
+if len(DATABASES['default']) == 0:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dbolib',
+            'USER': 'alejandro',
+            'PASSWORD': 'zzzzz'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
