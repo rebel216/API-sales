@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'orders',
     'rest_framework',
+    'whitenoise.runserver_nostatic',
           
 ]
 
