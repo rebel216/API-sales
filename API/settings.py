@@ -15,7 +15,6 @@ from decouple import config
 import dj_database_url
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['1.0.0.127.in-addr.arpa','sales-api-bv.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','sales-api-bv.herokuapp.com']
 
 
 # Application definition
@@ -93,17 +92,20 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'anomaly',
-       'USER': 'anomaly',
-       'PASSWORD': 'Rebel123@',
-       'HOST': 'localhost',
-       'PORT': '5431',
-   }
-}
+DATABASES = {}
 
+
+if DEBUG:
+    DATABASES["default"] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': BASE_DIR / 'db.postgresql',
+
+    }
+else:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(
+        default=config('DATABASE_URL'))  # type: ignore
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
