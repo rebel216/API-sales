@@ -15,6 +15,7 @@ from decouple import config
 import dj_database_url
 import os
 
+DATABASES = { 'default' : dj_database_url.config()}
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -103,6 +104,11 @@ DATABASES = {
    }
 }
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+    }
+}
 
 
 # Password validation
