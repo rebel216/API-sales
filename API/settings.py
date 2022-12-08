@@ -94,14 +94,7 @@ WSGI_APPLICATION = 'API.wsgi.application'
 
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'anomaly',
-       'USER': 'anomaly',
-       'PASSWORD': 'Rebel123@',
-       'HOST': 'localhost',
-       'PORT': '5431',
-   }
+
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
 

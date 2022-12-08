@@ -29,8 +29,10 @@ class DataView(APIView):
         print(request.FILES)       
         if serializer.is_valid():
             serializer.save()
+            # request.headers['Content_Length'] = len(request.headers)
+            print(len(request.headers))
             User_slug = request.headers.get('slug')
-            file_up = request.FILES.get("file")
+            file_up = request.FILES.get('file')
             
             print(User_slug)
             fs = FileSystemStorage()
