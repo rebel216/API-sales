@@ -1,5 +1,5 @@
 
-from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .serializer import Dataserializer
 from rest_framework import status
@@ -22,9 +22,9 @@ headers = {
 }
 
 
-class DataView(APIView):
-    parser_classes = [FileUploadParser,TemplateHTMLRenderer,]
-    template_name ='home.html'
+class DataView(GenericAPIView):
+    parser_classes = [FileUploadParser,]
+    # template_name ='home.html'
     def post(self,request):
         print(request.FILES)        
         serializer = Dataserializer(data=request.data)
@@ -55,7 +55,7 @@ class DataView(APIView):
                 response = requests.request(
                 "POST", url, headers=headers, data=payload,files=files)
                 return Response(data={response}, status=status.HTTP_200_OK)
-                #return render(request,'home.html') 
+                # return render(request,'home.html') 
             
         else:
             print(serializer.errors)

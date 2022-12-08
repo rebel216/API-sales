@@ -5,7 +5,7 @@ from orders.models import Data
 
 class Dataserializer(serializers.Serializer):
     # user_slug = serializers.CharField(max_length=200)
-    # file = serializers.FileField()
+    file = serializers.FileField()
     class Meta():
         model = Data
         fields = ('__all__')
